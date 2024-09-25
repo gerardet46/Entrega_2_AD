@@ -2,11 +2,15 @@
 title: "informe"
 format: html
 editor: visual
+author: "Miquel Àngel Aguiló, Joan Camps, Gerard Ribas"
 ---
 
-```{r, echo=FALSE}
+```{r, echo = FALSE, include=FALSE}
 library(tidyverse)
 ```
+
+Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
+
 
 ```{r}
 raw=read_csv2("data_raw.csv")
@@ -14,6 +18,7 @@ raw=read_csv2("data_raw.csv")
 colnames(raw)
 
 ```
+Començam fent una neteja de les dades. Bàsicament, afegim la columna *score* i eliminam les columnes on apareixen les respostes a les preguntes sobre salut vocal.
 
 ```{r}
 canvi_factors <- c("Mai" = 0, "Gairebé mai" = 1, "A vegades" = 2, 
@@ -28,4 +33,57 @@ df <- raw %>%
 write_csv2(df, "data.csv")
 ```
 
+##Pregunta a contestar La pregunta a contestar és "Els professors donen manco importància a la veu que a l'esport o l'alimentació?" Canviam el nom de les columnes que tenen la informació important per netedat del codi.
 
+```{r}
+df= df %>% 
+  rename(veu = 2, esport = 8, alimentacio = 14 )%>% 
+  mutate(mitjana=round((esport+alimentacio)/2))
+```
+
+Inicialment, feim gràfiques per creuar les dades.
+
+```{r}
+df_esp <- df %>%
+  group_by(veu, esport) %>%
+  summarise(freq = n())
+
+df_esp %>% 
+  ggplot(aes(x=esport, y = veu, size=freq)) +
+  geom_point(alpha = 0.5, color = "blue")+
+  geom_abline(intercept = 0, slope = 1)+
+  scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  theme_bw()
+
+df_ali <- df %>%
+  group_by(veu, alimentacio) %>%
+  summarise(freq = n())
+
+df_ali %>% 
+  ggplot(aes(x=alimentacio, y = veu, size=freq)) +
+  geom_point(alpha = 0.5, color = "red")+
+  geom_abline(intercept = 0, slope = 1)+
+  scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  theme_bw()
+
+```
+
+Ens interessarà identificar les zones amb més tendència. Veim que en els dos casos, es dona més importància a la veu, però en el cas de l'alimentació és molt més notable.
+
+Vegem les tendències més freqüents
+
+```{r}
+df_esp %>% 
+  arrange(desc(freq)) %>%
+  head
+```
+
+```{r}
+df_ali %>% 
+  arrange(desc(freq)) %>%
+  head
+```
+
+Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l'score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l'esport i alimentació) tenen menor *score* que les de sota (recordem, menor score implica major salut vocal).
