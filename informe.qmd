@@ -1,0 +1,31 @@
+---
+title: "informe"
+format: html
+editor: visual
+---
+
+```{r, echo=FALSE}
+library(tidyverse)
+```
+
+```{r}
+raw=read_csv2("data_raw.csv")
+
+colnames(raw)
+
+```
+
+```{r}
+canvi_factors <- c("Mai" = 0, "Gairebé mai" = 1, "A vegades" = 2, 
+                   "Gairebé sempre" = 3, "Sempre" = 4)
+
+# Convert the factor to numeric by applying the mapping
+df <- raw %>%
+  mutate(across(28:37, ~ canvi_factors[.]), .keep = "all") %>% 
+  mutate(score = rowSums(across(28:37))) %>%
+  select(c(1:27, 39))
+
+write_csv2(df, "data.csv")
+```
+
+
