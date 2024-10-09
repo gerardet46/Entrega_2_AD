@@ -95,3 +95,13 @@ Havent relacionat les dades i vist les tendències, ens interessa creuar dites d
 ## Relació amb l'Score
 
 Un cop hem relacionat el nivell d'imporància que li donen els professors a la veu, amb la que li donen a l'esport i a l'alimentació respectivament, anem a comparar com tenen la veu cada un d'aquests perfils.
+
+```{r}
+ggplot(df, aes(x = esport, y = score)) +
+  geom_violin() +
+  theme_minimal() +
+  labs(title = "Diagrama de violín de millas por galón (ciudad)",
+       x = "Clase de vehículo",
+       y = "Millas por galón en ciudad")
+
+```
