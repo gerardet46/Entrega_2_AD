@@ -5,12 +5,15 @@ editor: visual
 author: "Miquel Àngel Aguiló, Joan Camps, Gerard Ribas"
 ---
 
-```{r, echo = FALSE, include=FALSE}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r, echo = FALSE}
 library(tidyverse)
 ```
 
 Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
-
 
 ```{r}
 raw=read_csv2("data_raw.csv")
@@ -18,6 +21,7 @@ raw=read_csv2("data_raw.csv")
 colnames(raw)
 
 ```
+
 Començam fent una neteja de les dades. Bàsicament, afegim la columna *score* i eliminam les columnes on apareixen les respostes a les preguntes sobre salut vocal.
 
 ```{r}
@@ -87,3 +91,7 @@ df_ali %>%
 ```
 
 Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l'score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l'esport i alimentació) tenen menor *score* que les de sota (recordem, menor score implica major salut vocal).
+
+## Relació amb l'Score
+
+Un cop hem relacionat el nivell d'imporància que li donen els professors a la veu, amb la que li donen a l'esport i a l'alimentació respectivament, anem a comparar com tenen la veu cada un d'aquests perfils.
