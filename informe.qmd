@@ -24,8 +24,10 @@ library(viridis)
 
 Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
 
+
 ```{r} 
 raw=read_csv2("data_raw.csv") 
+
 
 colnames(raw)
 
@@ -101,6 +103,7 @@ df_ali %>%
 ```
 
 Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l'score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l'esport i alimentació) tenen menor *score* que les de sota (recordem, menor score implica major salut vocal).
+
 
 ### Part nova classe
 Empram les dades que fa servir tota la classe
@@ -220,4 +223,19 @@ En mitjana es dona una importància diferent a cada un dels tres aspectes.
 
 
 
+
+
+## Relació amb l'Score
+
+Un cop hem relacionat el nivell d'imporància que li donen els professors a la veu, amb la que li donen a l'esport i a l'alimentació respectivament, anem a comparar com tenen la veu cada un d'aquests perfils.
+
+```{r}
+ggplot(df, aes(x = esport, y = score)) +
+  geom_violin() +
+  theme_minimal() +
+  labs(title = "Diagrama de violín de millas por galón (ciudad)",
+       x = "Clase de vehículo",
+       y = "Millas por galón en ciudad")
+
+```
 
