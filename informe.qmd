@@ -223,12 +223,18 @@ En mitjana es dona una importància diferent a cada un dels tres aspectes.
 
 Un cop hem relacionat el nivell d'imporància que li donen els professors a la veu, amb la que li donen a l'esport i a l'alimentació respectivament, anem a comparar com tenen la veu cada un d'aquests perfils.
 
-```{r}
-ggplot(df, aes(x = esport, y = score)) +
-  geom_violin() +
-  theme_minimal() +
-  labs(title = "Diagrama de violín de millas por galón (ciudad)",
-       x = "Clase de vehículo",
-       y = "Millas por galón en ciudad")
+Anem a veure si les dades estan relacionades.
 
+```{r}
+correlació_esp_scor=cor(df$esport,df$score, method = "pearson")
+correlació_ali_scor=cor(df$alimentacio,df$score, method = "pearson")
+
+```
+
+A part d'això, si ens interessa quantificar la relació entre les variables i predir com canvia la salut de la veu a mesura que canvia la valoració de l'esport i l'alimentació respectivament, podem ajustar un model de regressió lineal.
+
+```{r}
+model <- lm(df$score ~ df$esport, data = df)
+summary(model)
+x <- plot(df$score~df$esport, main = "Recta de Regressió Lineal", xlab = "Nivell de valoració de l'esport", ylab = "Salut de la veu",col="blue", pch = 19)+abline(model, col = "red", lwd = 2)
 ```
