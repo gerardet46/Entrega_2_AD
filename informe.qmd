@@ -11,7 +11,6 @@ Rendering:
     embed-resources: true
 editor: visual
 author: "Miquel Àngel Aguiló, Joan Camps, Gerard Ribas"
-
 ---
 
 ```{r setup, include=FALSE}
@@ -24,8 +23,7 @@ library(viridis)
 
 Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
 
-
-```{r} 
+```{r}
 raw=read_csv2("data_raw.csv") 
 
 
@@ -47,7 +45,6 @@ df <- raw %>%
 
  write_csv2(df, "data.csv") 
 ```
-
 
 ##Pregunta a contestar La pregunta a contestar és "Els professors donen manco importància a la veu que a l'esport o l'alimentació?" Canviam el nom de les columnes que tenen la informació important per netedat del codi.
 
@@ -104,9 +101,10 @@ df_ali %>%
 
 Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l'score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l'esport i alimentació) tenen menor *score* que les de sota (recordem, menor score implica major salut vocal).
 
-
 ### Part nova classe
+
 Empram les dades que fa servir tota la classe
+
 ```{r}
 raw_data<-read.csv("data_raw.csv",
                    header=TRUE, sep=";")
@@ -174,7 +172,6 @@ data<-data %>% select(-c(28:37))%>%
 glimpse(data) 
 ```
 
-
 ```{r}
 data_long <- data %>%
   pivot_longer(cols = c(importancia_voz, 
@@ -196,11 +193,10 @@ ggplot(data_long, aes(x=categoria, y=valor, fill=categoria)) +
   scale_y_continuous(limits=c(0,10),breaks = seq(0, 10, 1)) 
 summary(data_long$valor ~data$importancia_voz)
 ```
+
 Aplicarem un test ANOVA per blocs, on cada una de les persones representa un bloc, i els tractaments són donar importància a l'alimentació, a l'esport, o a la veu.
 
 Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus
-
-
 
 ```{r}
 #Feim df per aplicar anova per blocs
@@ -213,17 +209,15 @@ df_anova = df_anova %>% pivot_longer(
 
 friedman.test(nota~Tractament|id,data=df_anova)
 ```
+
 Concloem que en mitjana no es dona la mateixa importància a esport, veu i alimentació.
 
 ```{r}
 pairwise.wilcox.test(df_anova$nota, df_anova$Tractament, paired =TRUE)
 
 ```
+
 En mitjana es dona una importància diferent a cada un dels tres aspectes.
-
-
-
-
 
 ## Relació amb l'Score
 
@@ -238,4 +232,3 @@ ggplot(df, aes(x = esport, y = score)) +
        y = "Millas por galón en ciudad")
 
 ```
-
