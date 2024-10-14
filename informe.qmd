@@ -228,6 +228,13 @@ Anem a veure si les dades estan relacionades.
 ```{r}
 correlació_esp_scor=cor(df$esport,df$score, method = "pearson")
 correlació_ali_scor=cor(df$alimentacio,df$score, method = "pearson")
+```
+
+Clarament, les dades de nivell de valoració de l'esport i l'alimentació amb la salut de la veu, no tenen depèndència entre elles, en canvi, si envers de la salut de la veu, ho comparam amb la importància que li donen a la veu.
+
+```{r}
+correlació_esp_veu=cor(df$esport,df$veu, method = "pearson")
+correlació_ali_scor=cor(df$alimentacio,df$veu, method = "pearson")
 
 ```
 
