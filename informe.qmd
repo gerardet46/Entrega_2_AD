@@ -219,6 +219,8 @@ pairwise.wilcox.test(df_anova$nota, df_anova$Tractament, paired =TRUE)
 
 En mitjana es dona una importància diferent a cada un dels tres aspectes.
 
+(Voleu borrar això?)
+
 ## Relació amb l'Score
 
 Un cop hem relacionat el nivell d'imporància que li donen els professors a la veu, amb la que li donen a l'esport i a l'alimentació respectivament, anem a comparar com tenen la veu cada un d'aquests perfils.
@@ -245,3 +247,29 @@ model <- lm(df$score ~ df$esport, data = df)
 summary(model)
 x <- plot(df$score~df$esport, main = "Recta de Regressió Lineal", xlab = "Nivell de valoració de l'esport", ylab = "Salut de la veu",col="blue", pch = 19)+abline(model, col = "red", lwd = 2)
 ```
+
+## Dependents o independents?
+
+Seria interessant veure si les el nivell d'importància que li donen a l'esport (resp. amb l'alimentació) i el nivell d'importància que li donen a la veu, són dependents o no.
+
+Farem un test d'independència entre aquestes variables. Calcularem les freqüències esperades d'ambdues observacions, i veiem si es cumpleix la condició necessària de que els valors siguin majors que 5.
+
+```{r}
+taula_esport=addmargins(table(df$esport,df$veu))
+taula_alimentacio=addmargins(table(df$alimentacio,df$veu))
+#Ara extreurem les frequ marginals de les files
+freq_abs_esport_f=taula_esport[-dim(taula_esport)[1],"Sum"]
+freq_abs_alimentacio_f=taula_alimentacio[-dim(taula_alimentacio)[1],"Sum"]
+#També ho farem de les columnes
+freq_abs_esport_c=taula_esport["Sum",-dim(taula_esport)[2]]
+#(Siran igual amb l'alimentació)
+#Ara calcularem la taula de freqüències esperades
+freq_esperades_esport=freq_abs_esport_f%*%t(freq_abs_esport_c)/length(df$esport)
+freq_esperades_alimentacio=freq_abs_alimentacio_f%*%t(freq_abs_esport_c)/length(df$alimentacio)
+freq_esperades_esport
+freq_esperades_alimentacio
+taula_alimentacio
+taula_esport
+```
+
+Notem que no, llavors hauríem d'agrupar els nivells per a que es cumpleixi la condició necessària:
