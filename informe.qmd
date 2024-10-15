@@ -23,12 +23,10 @@ library(viridis)
 
 Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
 
-```{r}
+
+
+```{r, include=FALSE}
 raw=read_csv2("data_raw.csv") 
-
-
-colnames(raw)
-
 ```
 
 Començam fent una neteja de les dades. Bàsicament, afegim la columna *score* i eliminam les columnes on apareixen les respostes a les preguntes sobre salut vocal.
@@ -101,11 +99,10 @@ df_ali %>%
 
 Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l'score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l'esport i alimentació) tenen menor *score* que les de sota (recordem, menor score implica major salut vocal).
 
-### Part nova classe
+## LO D'ENTREGAR
+```{r, include=FALSE}
+#Empram la neteja de dades propocionada al git de la classe per poder unificar totes les preguntes en un sol document.
 
-Empram les dades que fa servir tota la classe
-
-```{r}
 raw_data<-read.csv("data_raw.csv",
                    header=TRUE, sep=";")
 
@@ -171,6 +168,41 @@ data<-data %>% select(-c(28:37))%>%
    bind_cols(VHI=datos$score)
 glimpse(data) 
 ```
+
+### Anàlisi exploratori
+
+Inicialment creuarem les dades d'importància a la veu amb importància a l'alimentació; i d'importància a la veu amb importància a l'esport.
+```{r, include=FALSE}
+df_esp <- data %>%
+  group_by(importancia_voz, importancia_deporte) %>%
+  summarise(freq = n())
+
+df_esp %>% 
+  ggplot(aes(x=importancia_deporte, y = importancia_voz, size=freq)) +
+  geom_point(alpha = 0.5, color = "blue")+
+  xlab("importància esport")+ylab("importància veu")+
+  geom_abline(intercept = 0, slope = 1)+
+  scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  theme_bw()
+
+df_ali <- data %>%
+  group_by(importancia_voz, dieta_saludable) %>%
+  summarise(freq = n())
+
+df_ali %>% 
+  ggplot(aes(x=dieta_saludable, y = importancia_voz, size=freq)) +
+  geom_point(alpha = 0.5, color = "red")+
+  xlab("importància dieta")+ylab("importància veu")+
+  geom_abline(intercept = 0, slope = 1)+
+  scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
+  theme_bw()
+
+```
+La recta diagonal del gràfic indica la resposta de donar la mateixa importància als dos factors. Si s'està per damunt, es dona més importància a la veu, i de fet veim que aquest és el cas més freqüent. De fet, en el cas de l'alimentació la importància a la veu envers de l'alimentació és més marcada. Notem també que en general la importància donada a les respostes és alta. 
+
+### Inferència
 
 ```{r}
 data_long <- data %>%
