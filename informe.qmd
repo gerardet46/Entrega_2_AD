@@ -1,6 +1,6 @@
 ---
 title: "Símptomes vocals professors"
-subtitle: "Pregunta 1"
+subtitle: "Pregunta 1: Els professors donen manco importància a la veu que a l'esport o l'alimentació?"
 date: today
 format:
   html:
@@ -11,96 +11,21 @@ Rendering:
     embed-resources: true
 editor: visual
 author: "Miquel Àngel Aguiló, Joan Camps, Gerard Ribas"
+lang: "ca"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = F, warning = FALSE, message = FALSE)
 library(tidyverse)
 library(readr)
 library(janitor)
 library(viridis)
+library(ggcorrplot)
 ```
 
 Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
 
-
-
-```{r, include=FALSE}
-raw=read_csv2("data_raw.csv") 
-```
-
-Començam fent una neteja de les dades. Bàsicament, afegim la columna *score* i eliminam les columnes on apareixen les respostes a les preguntes sobre salut vocal.
-
 ```{r}
-canvi_factors <- c("Mai" = 0, "Gairebé mai" = 1, "A vegades" = 2, 
-                  "Gairebé sempre" = 3, "Sempre" = 4) 
-
- # Convert the factor to numeric by applying the mapping -->
-df <- raw %>% 
-   mutate(across(28:37, ~ canvi_factors[.]), .keep = "all") %>%  
-   mutate(score = rowSums(across(28:37))) %>% 
-   select(c(1:27, 39)) 
-
- write_csv2(df, "data.csv") 
-```
-
-##Pregunta a contestar La pregunta a contestar és "Els professors donen manco importància a la veu que a l'esport o l'alimentació?" Canviam el nom de les columnes que tenen la informació important per netedat del codi.
-
-```{r}
-df= df %>% 
-  rename(veu = 2, esport = 8, alimentacio = 14 )%>% 
-  mutate(mitjana=round((esport+alimentacio)/2))
-```
-
-Inicialment, feim gràfiques per creuar les dades.
-
-```{r}
-df_esp <- df %>%
-  group_by(veu, esport) %>%
-  summarise(freq = n())
-
-df_esp %>% 
-  ggplot(aes(x=esport, y = veu, size=freq)) +
-  geom_point(alpha = 0.5, color = "blue")+
-  geom_abline(intercept = 0, slope = 1)+
-  scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
-  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
-  theme_bw()
-
-df_ali <- df %>%
-  group_by(veu, alimentacio) %>%
-  summarise(freq = n())
-
-df_ali %>% 
-  ggplot(aes(x=alimentacio, y = veu, size=freq)) +
-  geom_point(alpha = 0.5, color = "red")+
-  geom_abline(intercept = 0, slope = 1)+
-  scale_x_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
-  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 2))+
-  theme_bw()
-
-```
-
-Ens interessarà identificar les zones amb més tendència. Veim que en els dos casos, es dona més importància a la veu, però en el cas de l'alimentació és molt més notable.
-
-Vegem les tendències més freqüents
-
-```{r}
-df_esp %>% 
-  arrange(desc(freq)) %>%
-  head
-```
-
-```{r}
-df_ali %>% 
-  arrange(desc(freq)) %>%
-  head
-```
-
-Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l'score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l'esport i alimentació) tenen menor *score* que les de sota (recordem, menor score implica major salut vocal).
-
-## LO D'ENTREGAR
-```{r, include=FALSE}
 #Empram la neteja de dades propocionada al git de la classe per poder unificar totes les preguntes en un sol document.
 
 raw_data<-read.csv("data_raw.csv",
@@ -165,14 +90,15 @@ datos<-data %>% select(28:37) %>%
 datos<-datos %>% mutate(VHI=rowSums(datos))
 
 data<-data %>% select(-c(28:37))%>% 
-   bind_cols(VHI=datos$score)
-glimpse(data) 
+   bind_cols(VHI=datos$VHI)
+#glimpse(data)
 ```
 
 ### Anàlisi exploratori
 
 Inicialment creuarem les dades d'importància a la veu amb importància a l'alimentació; i d'importància a la veu amb importància a l'esport.
-```{r, include=FALSE}
+
+```{r}
 df_esp <- data %>%
   group_by(importancia_voz, importancia_deporte) %>%
   summarise(freq = n())
@@ -200,9 +126,23 @@ df_ali %>%
   theme_bw()
 
 ```
-La recta diagonal del gràfic indica la resposta de donar la mateixa importància als dos factors. Si s'està per damunt, es dona més importància a la veu, i de fet veim que aquest és el cas més freqüent. De fet, en el cas de l'alimentació la importància a la veu envers de l'alimentació és més marcada. Notem també que en general la importància donada a les respostes és alta. 
 
-### Inferència
+La recta diagonal del gràfic indica la resposta de donar la mateixa importància als dos factors. Si s'està per damunt, es dona més importància a la veu, i de fet veim que aquest és el cas més freqüent. De fet, en el cas de l'alimentació la importància a la veu envers de l'alimentació és més marcada. Notem també que en general la importància donada a les respostes és alta.
+
+Vegem si hi ha cap relació lineal entre les variables d'interès.
+
+```{r}
+corrs = data %>% select(c(2,8,14,28)) %>% rename(
+  "Importància Esport"=importancia_deporte,
+  "Importància Veu"=importancia_voz,
+  "Importància alimentació"=dieta_saludable
+  ) %>% cor
+ggcorrplot(corrs, type = "lower", lab=TRUE)
+```
+
+Veim que la importància a l'esport i l'alimentació amb la veu no estan gens correlacionades. És més, tampoc no es veu una correlació entre la importància a la veu i la VHI, i curiosament el valor obtingut és negatiu.
+
+Anem a veure també la distribució de les respostes, així com alguns estadístics.
 
 ```{r}
 data_long <- data %>%
@@ -221,14 +161,18 @@ ggplot(data_long, aes(x=categoria, y=valor, fill=categoria)) +
     legend.position="none",
     plot.title = element_text(size=11)
   ) + 
-  scale_x_discrete(labels = c("dieta_saludable" = "Alimentación", "importancia_deporte" = "Deporte", "importancia_voz" = "Voz")) +
+  scale_x_discrete(labels = c("dieta_saludable" = "Alimentació", "importancia_deporte" = "Esport", "importancia_voz" = "Veu")) +
   scale_y_continuous(limits=c(0,10),breaks = seq(0, 10, 1)) 
 summary(data_long$valor ~data$importancia_voz)
 ```
 
-Aplicarem un test ANOVA per blocs, on cada una de les persones representa un bloc, i els tractaments són donar importància a l'alimentació, a l'esport, o a la veu.
+Analitzant el gràfic, podem veure que les tendències de les respostes segueixen un ordre. Les respostes a la veu solen ser més altes que a esport, i aquestes darreres a alimentació. Així, les medianes a cada variable també segueixen aquest ordre.
 
-Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus
+### Inferència
+
+Comprovarem si la diferència observada entre les medianes es pot inferir a la població. Aplicarem un test ANOVA paramètric per blocs, on cada una de les persones representa un bloc, i els tractaments són donar importància a l'alimentació, a l'esport, o a la veu.
+
+Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus.
 
 ```{r}
 #Feim df per aplicar anova per blocs
@@ -242,7 +186,7 @@ df_anova = df_anova %>% pivot_longer(
 friedman.test(nota~Tractament|id,data=df_anova)
 ```
 
-Concloem que en mitjana no es dona la mateixa importància a esport, veu i alimentació.
+El p-valor és ínfim, i concloem que en mitjana no es dona la mateixa importància a esport, veu i alimentació.
 
 ```{r}
 pairwise.wilcox.test(df_anova$nota, df_anova$Tractament, paired =TRUE)
@@ -251,57 +195,16 @@ pairwise.wilcox.test(df_anova$nota, df_anova$Tractament, paired =TRUE)
 
 En mitjana es dona una importància diferent a cada un dels tres aspectes.
 
-(Voleu borrar això?)
+# Proposta resposta global
 
-## Relació amb l'Score
+La idea és contestar la pregunta de "la formació en veu afecta a la seva percepció de qualitat?". A partir de les dades recollides, proposam fixar-nos en les respostes a "Té formació sobre salut vocal?" i fer tres grups:
 
-Un cop hem relacionat el nivell d'imporància que li donen els professors a la veu, amb la que li donen a l'esport i a l'alimentació respectivament, anem a comparar com tenen la veu cada un d'aquests perfils.
+-   Fora formació
 
-Anem a veure si les dades estan relacionades.
+-   Formació independent (respostes a "vaig fer un curs fa temps" i "he fet un curs pel meu compte")
 
-```{r}
-correlació_esp_scor=cor(df$esport,df$score, method = "pearson")
-correlació_ali_scor=cor(df$alimentacio,df$score, method = "pearson")
-```
+-   Formació concreta (respostes a "logopeda" i "curs de servei de precaució")
 
-Clarament, les dades de nivell de valoració de l'esport i l'alimentació amb la salut de la veu, no tenen depèndència entre elles, en canvi, si envers de la salut de la veu, ho comparam amb la importància que li donen a la veu.
+Llavors, mostrar en un gràfic de violí les densitats de la VHI a cada grup, i fer una ANOVA d'una via amb les poblacions.
 
-```{r}
-correlació_esp_veu=cor(df$esport,df$veu, method = "pearson")
-correlació_ali_scor=cor(df$alimentacio,df$veu, method = "pearson")
-
-```
-
-A part d'això, si ens interessa quantificar la relació entre les variables i predir com canvia la salut de la veu a mesura que canvia la valoració de l'esport i l'alimentació respectivament, podem ajustar un model de regressió lineal.
-
-```{r}
-model <- lm(df$score ~ df$esport, data = df)
-summary(model)
-x <- plot(df$score~df$esport, main = "Recta de Regressió Lineal", xlab = "Nivell de valoració de l'esport", ylab = "Salut de la veu",col="blue", pch = 19)+abline(model, col = "red", lwd = 2)
-```
-
-## Dependents o independents?
-
-Seria interessant veure si les el nivell d'importància que li donen a l'esport (resp. amb l'alimentació) i el nivell d'importància que li donen a la veu, són dependents o no.
-
-Farem un test d'independència entre aquestes variables. Calcularem les freqüències esperades d'ambdues observacions, i veiem si es cumpleix la condició necessària de que els valors siguin majors que 5.
-
-```{r}
-taula_esport=addmargins(table(df$esport,df$veu))
-taula_alimentacio=addmargins(table(df$alimentacio,df$veu))
-#Ara extreurem les frequ marginals de les files
-freq_abs_esport_f=taula_esport[-dim(taula_esport)[1],"Sum"]
-freq_abs_alimentacio_f=taula_alimentacio[-dim(taula_alimentacio)[1],"Sum"]
-#També ho farem de les columnes
-freq_abs_esport_c=taula_esport["Sum",-dim(taula_esport)[2]]
-#(Siran igual amb l'alimentació)
-#Ara calcularem la taula de freqüències esperades
-freq_esperades_esport=freq_abs_esport_f%*%t(freq_abs_esport_c)/length(df$esport)
-freq_esperades_alimentacio=freq_abs_alimentacio_f%*%t(freq_abs_esport_c)/length(df$alimentacio)
-freq_esperades_esport
-freq_esperades_alimentacio
-taula_alimentacio
-taula_esport
-```
-
-Notem que no, llavors hauríem d'agrupar els nivells per a que es cumpleixi la condició necessària:
+Cap a dir que les respostes al qüestionari semblen incoherents en ocasions. Centrant-nos en les variables tractades en aquesta pregunta, les tendències a la importància donada a veu, esport i alimentació són pràcticament sempre molt altes. De fet, la densitat de la resposta a la importància a la veu sembla estar condicionada pel fet de respondre un qüestionari sobre el propi tema. Proposam valorar les importàncies donades als factors en base a criteris objectius preestablers per aconseguir una representació més fidel. Per exemple, hi ha individus responent amb molta importància a l'esport que realitzen manco esport a individus que n'hi donen molt poca; o individus que consumeixen alcohol, gaseosa i cafès habitualment que donen molta importància a la dieta.

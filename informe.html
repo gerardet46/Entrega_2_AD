@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Miquel Àngel Aguiló, Joan Camps, Gerard Ribas">
-<meta name="dcterms.date" content="2024-10-15">
 
 <title>Símptomes vocals professors</title>
 <style>
@@ -21,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -78,12 +43,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">Taula de continguts</h2>
    
   <ul>
-  <li><a href="#part-nova-classe" id="toc-part-nova-classe" class="nav-link active" data-scroll-target="#part-nova-classe">Part nova classe</a></li>
-  <li><a href="#relació-amb-lscore" id="toc-relació-amb-lscore" class="nav-link" data-scroll-target="#relació-amb-lscore">Relació amb l’Score</a></li>
-  <li><a href="#dependents-o-independents" id="toc-dependents-o-independents" class="nav-link" data-scroll-target="#dependents-o-independents">Dependents o independents?</a></li>
+  <li><a href="#anàlisi-exploratori" id="toc-anàlisi-exploratori" class="nav-link active" data-scroll-target="#anàlisi-exploratori">Anàlisi exploratori</a></li>
+  <li><a href="#inferència" id="toc-inferència" class="nav-link" data-scroll-target="#inferència">Inferència</a></li>
+  <li><a href="#proposta-resposta-global" id="toc-proposta-resposta-global" class="nav-link" data-scroll-target="#proposta-resposta-global">Proposta resposta global</a></li>
   </ul>
 </nav>
 </div>
@@ -92,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Símptomes vocals professors</h1>
-<p class="subtitle lead">Pregunta 1</p>
+<p class="subtitle lead">Pregunta 1: Els professors donen manco importància a la veu que a l’esport o l’alimentació?</p>
 </div>
 
 
@@ -100,16 +65,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
     <div class="quarto-title-meta-contents">
              <p>Miquel Àngel Aguiló, Joan Camps, Gerard Ribas </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Publicat</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 15, 2024</p>
+      <p class="date">15 d’octubre de 2024</p>
     </div>
   </div>
   
@@ -122,84 +87,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Enllaç <a href="https://github.com/gerardet46/Entrega_2_AD">git</a>.</p>
+<section id="anàlisi-exploratori" class="level3">
+<h3 class="anchored" data-anchor-id="anàlisi-exploratori">Anàlisi exploratori</h3>
+<p>Inicialment creuarem les dades d’importància a la veu amb importància a l’alimentació; i d’importància a la veu amb importància a l’esport.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>raw<span class="ot">=</span><span class="fu">read_csv2</span>(<span class="st">"data_raw.csv"</span>) </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "ID"                                                                                                                                                    
- [2] "De l'1 al 10 quina importancia té la veu per a vostè?"                                                                                                 
- [3] "Sexe"                                                                                                                                                  
- [4] "On fa feina?"                                                                                                                                          
- [5] "Cos docent"                                                                                                                                            
- [6] "Quina edat té?"                                                                                                                                        
- [7] "Practica esport o fa alguna activitat física?"                                                                                                         
- [8] "De l'1 al 10 quina importancia té la pràctica de l'esport o activitat física per a vostè?"                                                             
- [9] "Té una bona qualitat del son?"                                                                                                                         
-[10] "Consumeix cafè?"                                                                                                                                       
-[11] "Consumeix tabac?"                                                                                                                                      
-[12] "Consumeix alcohol?"                                                                                                                                    
-[13] "Consumeix begudes amb gas?"                                                                                                                            
-[14] "De  l'1 al 10 assenyali si segueix una dieta equilibrada i saludable."                                                                                 
-[15] "Ha estat diagnosticat per un metge o metgessa d'alguna de les malalties següents?"                                                                     
-[16] "Si ha marcat alguna de les opcions anterior, especifiqui la patologia."                                                                                
-[17] "Ha estat diagnosticat per un especialista mèdic (otorinolaringòleg, foniatra) d'alguna lesió a les cordes vocals?"                                     
-[18] "Aquest mes ha tengut algún símptoma vocal dels següents?\r\nEs pot marcar més d'una opció"                                                             
-[19] "L'han operat de les cordes vocals?"                                                                                                                    
-[20] "Si té alguna alteració de la veu, recorda quin temps fa que va començar?"                                                                              
-[21] "En alguna ocasió, ha estat de baixa laboral per problemes de veu?"                                                                                     
-[22] "Si la resposta a la pregunta anterior és afirmativa, indiqui la periodicitat (cada any, trimestre...) i la durada de la baixa més llarga i la malaltia"
-[23] "Ha tengut problemes de veu importants i que li han dificultat la feina al llarg del curs 2022-2023?"                                                   
-[24] "Té formació sobre salut vocal?"                                                                                                                        
-[25] "Pren alguna o algunes de les medicacions següents?\r\nEs pot marcar més d'una opció"                                                                   
-[26] "Segueix una rutina d'higiene vocal?"                                                                                                                   
-[27] "Fa alguna de les activitats següents? Es pot marcar més d'una opció"                                                                                   
-[28] "La gent em sent amb dificultat a causa de la meva veu"                                                                                                 
-[29] "La gent no m'entén en llocs sorollosos"                                                                                                                
-[30] "Els meus problemes amb la veu alteren la meva vida personal i social"                                                                                  
-[31] "Em sent desplaçat de les converses per la meva veu"                                                                                                    
-[32] "El meu problema amb la veu afecta el rendiment laboral"                                                                                                
-[33] "Not que necessit tensar la gola (gargamella) per produir la veu"                                                                                       
-[34] "La qualitat de la meva veu és imprevisible"                                                                                                            
-[35] "La meva veu em molesta"                                                                                                                                
-[36] "La meva veu em fa sentir certa minusvalidesa"                                                                                                          
-[37] "La gent em pregunta: què et passa amb la veu?"                                                                                                         
-[38] "...38"                                                                                                                                                 </code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="informe_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>Començam fent una neteja de les dades. Bàsicament, afegim la columna <em>score</em> i eliminam les columnes on apareixen les respostes a les preguntes sobre salut vocal.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>canvi_factors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Mai"</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">"Gairebé mai"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"A vegades"</span> <span class="ot">=</span> <span class="dv">2</span>, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Gairebé sempre"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Sempre"</span> <span class="ot">=</span> <span class="dv">4</span>) </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># Convert the factor to numeric by applying the mapping --&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> raw <span class="sc">%&gt;%</span> </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="dv">28</span><span class="sc">:</span><span class="dv">37</span>, <span class="sc">~</span> canvi_factors[.]), <span class="at">.keep =</span> <span class="st">"all"</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">score =</span> <span class="fu">rowSums</span>(<span class="fu">across</span>(<span class="dv">28</span><span class="sc">:</span><span class="dv">37</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>, <span class="dv">39</span>)) </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">write_csv2</span>(df, <span class="st">"data.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="informe_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>##Pregunta a contestar La pregunta a contestar és “Els professors donen manco importància a la veu que a l’esport o l’alimentació?” Canviam el nom de les columnes que tenen la informació important per netedat del codi.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">=</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">veu =</span> <span class="dv">2</span>, <span class="at">esport =</span> <span class="dv">8</span>, <span class="at">alimentacio =</span> <span class="dv">14</span> )<span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mitjana=</span><span class="fu">round</span>((esport<span class="sc">+</span>alimentacio)<span class="sc">/</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Inicialment, feim gràfiques per creuar les dades.</p>
+</div>
+<p>La recta diagonal del gràfic indica la resposta de donar la mateixa importància als dos factors. Si s’està per damunt, es dona més importància a la veu, i de fet veim que aquest és el cas més freqüent. De fet, en el cas de l’alimentació la importància a la veu envers de l’alimentació és més marcada. Notem també que en general la importància donada a les respostes és alta.</p>
+<p>Vegem si hi ha cap relació lineal entre les variables d’interès.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_esp <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(veu, esport) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">freq =</span> <span class="fu">n</span>())</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df_esp <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>esport, <span class="at">y =</span> veu, <span class="at">size=</span>freq)) <span class="sc">+</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"blue"</span>)<span class="sc">+</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="informe_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Veim que la importància a l’esport i l’alimentació amb la veu no estan gens correlacionades. És més, tampoc no es veu una correlació entre la importància a la veu i la VHI, i curiosament el valor obtingut és negatiu.</p>
+<p>Anem a veure també la distribució de les respostes, així com alguns estadístics.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -207,206 +127,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_ali <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(veu, alimentacio) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">freq =</span> <span class="fu">n</span>())</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_ali <span class="sc">%&gt;%</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>alimentacio, <span class="at">y =</span> veu, <span class="at">size=</span>freq)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">slope =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>))<span class="sc">+</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="informe_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Ens interessarà identificar les zones amb més tendència. Veim que en els dos casos, es dona més importància a la veu, però en el cas de l’alimentació és molt més notable.</p>
-<p>Vegem les tendències més freqüents</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_esp <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(freq)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-# Groups:   veu [2]
-    veu esport  freq
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
-1    10     10    46
-2    10      8    27
-3    10      9    18
-4    10      7    15
-5    10      6    11
-6     9     10    10</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_ali <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(freq)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-# Groups:   veu [2]
-    veu alimentacio  freq
-  &lt;dbl&gt;       &lt;dbl&gt; &lt;int&gt;
-1    10           8    44
-2    10           7    31
-3    10           9    21
-4     9           8    14
-5    10           6    12
-6     9           7    10</code></pre>
-</div>
-</div>
-<p>Havent relacionat les dades i vist les tendències, ens interessa creuar dites dades amb l’score. Podríem veure si les persones amb respostes per sobre de les diagonals als gràfics anteriors (és a dir, donen més importància a la veu que a l’esport i alimentació) tenen menor <em>score</em> que les de sota (recordem, menor score implica major salut vocal).</p>
-<section id="part-nova-classe" class="level3">
-<h3 class="anchored" data-anchor-id="part-nova-classe">Part nova classe</h3>
-<p>Empram les dades que fa servir tota la classe</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>raw_data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"data_raw.csv"</span>,</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">sep=</span><span class="st">";"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> raw_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">rename</span>(</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Importancia_voz =</span> <span class="st">"De.l.1.al.10.quina.importancia.té.la.veu.per.a.vostè."</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sexo =</span> <span class="st">"Sexe"</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Lugar_trabajo=</span><span class="st">"On.fa.feina."</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Cuerpo_docente=</span><span class="st">"Cos.docent"</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Edad=</span><span class="st">"Quina.edat.té."</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Actividas_fisica=</span><span class="st">"Practica.esport.o.fa.alguna.activitat.física."</span>,</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Importancia_deporte=</span><span class="st">"De.l.1.al.10.quina.importancia.té.la.pràctica.de.l.esport.o.activitat.física.per.a.vostè."</span>,</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    Calidad_sueño<span class="ot">=</span><span class="st">"Té.una.bona.qualitat.del.son."</span>,</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Cafe=</span><span class="st">"Consumeix.cafè."</span>,</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Tabaco=</span><span class="st">"Consumeix.tabac."</span>,</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Alcohol=</span><span class="st">"Consumeix.alcohol."</span>,</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Bebida_gas=</span><span class="st">"Consumeix.begudes.amb.gas."</span>,</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">Dieta_saludable=</span><span class="st">"De..l.1.al.10.assenyali.si.segueix.una.dieta.equilibrada.i.saludable."</span>,</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">Diagnostico=</span><span class="st">"Ha.estat.diagnosticat.per.un.metge.o.metgessa.d.alguna.de.les.malalties.següents."</span>,</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">Patologia=</span><span class="st">"Si.ha.marcat.alguna.de.les.opcions.anterior..especifiqui.la.patologia."</span>,</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">Diagnostico_especialista=</span><span class="st">"Ha.estat.diagnosticat.per.un.especialista.mèdic..otorinolaringòleg..foniatra..d.alguna.lesió.a.les.cordes.vocals."</span>,</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">Sintomas=</span><span class="st">"Aquest.mes.ha.tengut.algún.símptoma.vocal.dels.següents..Es.pot.marcar.més.d.una.opció"</span>,</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">Operacion=</span><span class="st">"L.han.operat.de.les.cordes.vocals."</span>,</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">Tiempo_alteracion=</span><span class="st">"Si.té.alguna.alteració.de.la.veu..recorda.quin.temps.fa.que.va.començar."</span>,</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Baja_voz=</span><span class="st">"En.alguna.ocasió..ha.estat.de.baixa.laboral.per.problemes.de.veu."</span>,</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">Baja_larga=</span><span class="st">"Si.la.resposta.a.la.pregunta.anterior.és.afirmativa..indiqui.la.periodicitat..cada.any..trimestre.....i.la.durada.de.la.baixa.més.llarga.i.la.malaltia"</span>,</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">Problema_curso22_23=</span><span class="st">"Ha.tengut.problemes.de.veu.importants.i.que.li.han.dificultat.la.feina.al.llarg.del.curs.2022.2023."</span>,</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">Formacion_voz=</span><span class="st">"Té.formació.sobre.salut.vocal."</span>,</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">Medicacion=</span><span class="st">"Pren.alguna.o.algunes.de.les.medicacions.següents..Es.pot.marcar.més.d.una.opció"</span>,</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">Higiene_vocal=</span><span class="st">"Segueix.una.rutina.d.higiene.vocal."</span>,</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">Actividades=</span><span class="st">"Fa.alguna.de.les.activitats.següents..Es.pot.marcar.més.d.una.opció"</span>,</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">No_me_ecuchan=</span><span class="st">"La.gent.em.sent.amb.dificultat.a.causa.de.la.meva.veu"</span>,</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">No_me_escuchan_ruido=</span><span class="st">"La.gent.no.m.entén.en.llocs.sorollosos"</span>,</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">Alteracion_vida_social=</span><span class="st">"Els.meus.problemes.amb.la.veu.alteren.la.meva.vida.personal.i.social"</span>,</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">Desplazado_conversacion=</span><span class="st">"Em.sent.desplaçat.de.les.converses.per.la.meva.veu"</span>,</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rendimiento_laboral=</span><span class="st">"El.meu.problema.amb.la.veu.afecta.el.rendiment.laboral"</span>,</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">Tensar_producir_voz=</span><span class="st">"Not.que.necessit.tensar.la.gola..gargamella..per.produir.la.veu"</span>,</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">Calidad_imprevisible=</span><span class="st">"La.qualitat.de.la.meva.veu.és.imprevisible"</span>,</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">Me_molesta=</span><span class="st">"La.meva.veu.em.molesta"</span>,</span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">Minusvalia=</span><span class="st">"La.meva.veu.em.fa.sentir.certa.minusvalidesa"</span>,</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">Gente_pregunta=</span><span class="st">"La.gent.em.pregunta..què.et.passa.amb.la.veu."</span></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(raw_data) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span><span class="fu">c</span>(importancia_voz,</span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>                         importancia_deporte,</span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>                         dieta_saludable), as.factor))</span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">&lt;-</span>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">28</span><span class="sc">:</span><span class="dv">37</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">case_when</span>(</span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>     . <span class="sc">==</span> <span class="st">"Mai"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>     . <span class="sc">==</span> <span class="st">"Gairebé mai"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>     . <span class="sc">==</span> <span class="st">"A vegades"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>     . <span class="sc">==</span> <span class="st">"Gairebé sempre"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>     . <span class="sc">==</span> <span class="st">"Sempre"</span> <span class="sc">~</span> <span class="dv">4</span></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>   ))</span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>   )</span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">&lt;-</span>datos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">VHI=</span><span class="fu">rowSums</span>(datos))</span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">28</span><span class="sc">:</span><span class="dv">37</span>))<span class="sc">%&gt;%</span> </span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>   <span class="fu">bind_cols</span>(<span class="at">VHI=</span>datos<span class="sc">$</span>score)</span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 185
-Columns: 27
-$ id                       &lt;fct&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
-$ importancia_voz          &lt;int&gt; 10, 10, 10, 10, 10, 10, 9, 9, 10, 10, 9, 10, …
-$ sexo                     &lt;fct&gt; Femení, Femení, Masculí, Femení, Femení, Feme…
-$ lugar_trabajo            &lt;fct&gt; "Palma, Llucmajor, Algaida, Santa Eugènia, Ma…
-$ cuerpo_docente           &lt;fct&gt; "Formació Professional", "Educació Secundària…
-$ edad                     &lt;fct&gt; Entre 36 i 50, Entre 36 i 50, Entre 36 i 50, …
-$ actividas_fisica         &lt;fct&gt; Més de 150 min. per setmana, Més de 150 min. …
-$ importancia_deporte      &lt;int&gt; 10, 10, 10, 8, 10, 10, 10, 7, 10, 10, 7, 9, 7…
-$ calidad_sueno            &lt;fct&gt; Dorm bé i em despert descansat, Dorm bé però …
-$ cafe                     &lt;fct&gt; Diàriament, Ocasionalment, Diàriament, Diària…
-$ tabaco                   &lt;fct&gt; Diariament, No, No, Anteriorment (exfumador),…
-$ alcohol                  &lt;fct&gt; Ocasionalment, Ocasionalment, Setmanalment, S…
-$ bebida_gas               &lt;fct&gt; Mai, Ocasionalment, Diàriament, Ocasionalment…
-$ dieta_saludable          &lt;int&gt; 8, 6, 9, 6, 10, 10, 8, 8, 8, 8, 9, 9, 8, 7, 7…
-$ diagnostico              &lt;fct&gt; "Cap de les esmentades anteriorment", "Cap de…
-$ patologia                &lt;fct&gt; "", "", "", "", "Asma, al·lergia", "", "", ""…
-$ diagnostico_especialista &lt;fct&gt; No, Si, No, Si, No, Si, No, No, Si, No, No, N…
-$ sintomas                 &lt;fct&gt; "Mucositat", "Fatiga vocal", "Veu ronca, esca…
-$ operacion                &lt;fct&gt; No, No, No, No, No, No, No, No, Si, No, No, N…
-$ tiempo_alteracion        &lt;fct&gt; No tenc cap alteració de la veu., Va començar…
-$ baja_voz                 &lt;fct&gt; "No, mai he estat de baixa per un problema de…
-$ baja_larga               &lt;fct&gt; "", "El curs escolar passat. Una setmana senc…
-$ problema_curso22_23      &lt;fct&gt; No, Si, Si, No, Si, Si, Si, No, No, No, No, N…
-$ formacion_voz            &lt;fct&gt; "Si, vaig fer un curs fa temps", "No, mai he …
-$ medicacion               &lt;fct&gt; "Aspirina i antiinflamatoris no esteroideus",…
-$ higiene_vocal            &lt;fct&gt; "No seguesc cap rutina per a la veu", "No seg…
-$ actividades              &lt;fct&gt; "No faig cap activitat amb exigència vocal ex…</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(importancia_voz, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         importancia_deporte, </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                         dieta_saludable),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">names_to =</span> <span class="st">"categoria"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_to =</span> <span class="st">"valor"</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_long, <span class="fu">aes</span>(<span class="at">x=</span>categoria, <span class="at">y=</span>valor, <span class="at">fill=</span>categoria)) <span class="sc">+</span> </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim=</span><span class="cn">FALSE</span>)<span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.1</span>, <span class="at">fill=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">""</span>,<span class="at">x=</span><span class="st">""</span>, <span class="at">y =</span> <span class="st">"Importancia (valores de 0 a 10)"</span>) <span class="sc">+</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position=</span><span class="st">"none"</span>,</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">11</span>)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"dieta_saludable"</span> <span class="ot">=</span> <span class="st">"Alimentación"</span>, <span class="st">"importancia_deporte"</span> <span class="ot">=</span> <span class="st">"Deporte"</span>, <span class="st">"importancia_voz"</span> <span class="ot">=</span> <span class="st">"Voz"</span>)) <span class="sc">+</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="informe_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data_long<span class="sc">$</span>valor <span class="sc">~</span>data<span class="sc">$</span>importancia_voz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Length   Class    Mode 
       3 formula    call </code></pre>
 </div>
 </div>
-<p>Aplicarem un test ANOVA per blocs, on cada una de les persones representa un bloc, i els tractaments són donar importància a l’alimentació, a l’esport, o a la veu.</p>
-<p>Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus</p>
+<p>Analitzant el gràfic, podem veure que les tendències de les respostes segueixen un ordre. Les respostes a la veu solen ser més altes que a esport, i aquestes darreres a alimentació. Així, les medianes a cada variable també segueixen aquest ordre.</p>
+</section>
+<section id="inferència" class="level3">
+<h3 class="anchored" data-anchor-id="inferència">Inferència</h3>
+<p>Comprovarem si la diferència observada entre les medianes es pot inferir a la població. Aplicarem un test ANOVA paramètric per blocs, on cada una de les persones representa un bloc, i els tractaments són donar importància a l’alimentació, a l’esport, o a la veu.</p>
+<p>Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Feim df per aplicar anova per blocs</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df_anova <span class="ot">=</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">14</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>df_anova <span class="ot">=</span> df_anova <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(importancia_voz, importancia_deporte, dieta_saludable), </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to=</span><span class="st">"Tractament"</span>, <span class="at">values_to =</span> <span class="st">"nota"</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">friedman.test</span>(nota<span class="sc">~</span>Tractament<span class="sc">|</span>id,<span class="at">data=</span>df_anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Friedman rank sum test
@@ -415,9 +147,8 @@ data:  nota and Tractament and id
 Friedman chi-squared = 158.43, df = 2, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Concloem que en mitjana no es dona la mateixa importància a esport, veu i alimentació.</p>
+<p>El p-valor és ínfim, i concloem que en mitjana no es dona la mateixa importància a esport, veu i alimentació.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.wilcox.test</span>(df_anova<span class="sc">$</span>nota, df_anova<span class="sc">$</span>Tractament, <span class="at">paired =</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pairwise comparisons using Wilcoxon signed rank test with continuity correction 
@@ -432,125 +163,17 @@ P value adjustment method: holm </code></pre>
 </div>
 </div>
 <p>En mitjana es dona una importància diferent a cada un dels tres aspectes.</p>
-<p>(Voleu borrar això?)</p>
 </section>
-<section id="relació-amb-lscore" class="level2">
-<h2 class="anchored" data-anchor-id="relació-amb-lscore">Relació amb l’Score</h2>
-<p>Un cop hem relacionat el nivell d’imporància que li donen els professors a la veu, amb la que li donen a l’esport i a l’alimentació respectivament, anem a comparar com tenen la veu cada un d’aquests perfils.</p>
-<p>Anem a veure si les dades estan relacionades.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>correlació_esp_scor<span class="ot">=</span><span class="fu">cor</span>(df<span class="sc">$</span>esport,df<span class="sc">$</span>score, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>correlació_ali_scor<span class="ot">=</span><span class="fu">cor</span>(df<span class="sc">$</span>alimentacio,df<span class="sc">$</span>score, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Clarament, les dades de nivell de valoració de l’esport i l’alimentació amb la salut de la veu, no tenen depèndència entre elles, en canvi, si envers de la salut de la veu, ho comparam amb la importància que li donen a la veu.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>correlació_esp_veu<span class="ot">=</span><span class="fu">cor</span>(df<span class="sc">$</span>esport,df<span class="sc">$</span>veu, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>correlació_ali_scor<span class="ot">=</span><span class="fu">cor</span>(df<span class="sc">$</span>alimentacio,df<span class="sc">$</span>veu, <span class="at">method =</span> <span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>A part d’això, si ens interessa quantificar la relació entre les variables i predir com canvia la salut de la veu a mesura que canvia la valoració de l’esport i l’alimentació respectivament, podem ajustar un model de regressió lineal.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(df<span class="sc">$</span>score <span class="sc">~</span> df<span class="sc">$</span>esport, <span class="at">data =</span> df)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = df$score ~ df$esport, data = df)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--7.464 -5.406 -1.406  3.594 20.565 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)  7.17737    2.47414   2.901  0.00418 **
-df$esport    0.02862    0.29084   0.098  0.92172   
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.515 on 183 degrees of freedom
-Multiple R-squared:  5.29e-05,  Adjusted R-squared:  -0.005411 
-F-statistic: 0.009682 on 1 and 183 DF,  p-value: 0.9217</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">plot</span>(df<span class="sc">$</span>score<span class="sc">~</span>df<span class="sc">$</span>esport, <span class="at">main =</span> <span class="st">"Recta de Regressió Lineal"</span>, <span class="at">xlab =</span> <span class="st">"Nivell de valoració de l'esport"</span>, <span class="at">ylab =</span> <span class="st">"Salut de la veu"</span>,<span class="at">col=</span><span class="st">"blue"</span>, <span class="at">pch =</span> <span class="dv">19</span>)<span class="sc">+</span><span class="fu">abline</span>(model, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="informe_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="dependents-o-independents" class="level2">
-<h2 class="anchored" data-anchor-id="dependents-o-independents">Dependents o independents?</h2>
-<p>Seria interessant veure si les el nivell d’importància que li donen a l’esport (resp. amb l’alimentació) i el nivell d’importància que li donen a la veu, són dependents o no.</p>
-<p>Farem un test d’independència entre aquestes variables. Calcularem les freqüències esperades d’ambdues observacions, i veiem si es cumpleix la condició necessària de que els valors siguin majors que 5.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>taula_esport<span class="ot">=</span><span class="fu">addmargins</span>(<span class="fu">table</span>(df<span class="sc">$</span>esport,df<span class="sc">$</span>veu))</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>taula_alimentacio<span class="ot">=</span><span class="fu">addmargins</span>(<span class="fu">table</span>(df<span class="sc">$</span>alimentacio,df<span class="sc">$</span>veu))</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Ara extreurem les frequ marginals de les files</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>freq_abs_esport_f<span class="ot">=</span>taula_esport[<span class="sc">-</span><span class="fu">dim</span>(taula_esport)[<span class="dv">1</span>],<span class="st">"Sum"</span>]</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>freq_abs_alimentacio_f<span class="ot">=</span>taula_alimentacio[<span class="sc">-</span><span class="fu">dim</span>(taula_alimentacio)[<span class="dv">1</span>],<span class="st">"Sum"</span>]</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#També ho farem de les columnes</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>freq_abs_esport_c<span class="ot">=</span>taula_esport[<span class="st">"Sum"</span>,<span class="sc">-</span><span class="fu">dim</span>(taula_esport)[<span class="dv">2</span>]]</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#(Siran igual amb l'alimentació)</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Ara calcularem la taula de freqüències esperades</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>freq_esperades_esport<span class="ot">=</span>freq_abs_esport_f<span class="sc">%*%</span><span class="fu">t</span>(freq_abs_esport_c)<span class="sc">/</span><span class="fu">length</span>(df<span class="sc">$</span>esport)</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>freq_esperades_alimentacio<span class="ot">=</span>freq_abs_alimentacio_f<span class="sc">%*%</span><span class="fu">t</span>(freq_abs_esport_c)<span class="sc">/</span><span class="fu">length</span>(df<span class="sc">$</span>alimentacio)</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>freq_esperades_esport</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                5          6          7         8    9         10
- [1,] 0.005405405 0.01081081 0.02162162 0.0972973  0.2  0.6648649
- [2,] 0.005405405 0.01081081 0.02162162 0.0972973  0.2  0.6648649
- [3,] 0.010810811 0.02162162 0.04324324 0.1945946  0.4  1.3297297
- [4,] 0.037837838 0.07567568 0.15135135 0.6810811  1.4  4.6540541
- [5,] 0.070270270 0.14054054 0.28108108 1.2648649  2.6  8.6432432
- [6,] 0.129729730 0.25945946 0.51891892 2.3351351  4.8 15.9567568
- [7,] 0.237837838 0.47567568 0.95135135 4.2810811  8.8 29.2540541
- [8,] 0.167567568 0.33513514 0.67027027 3.0162162  6.2 20.6108108
- [9,] 0.335135135 0.67027027 1.34054054 6.0324324 12.4 41.2216216</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>freq_esperades_alimentacio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              5          6          7         8    9        10
-[1,] 0.02162162 0.04324324 0.08648649 0.3891892  0.8  2.659459
-[2,] 0.02702703 0.05405405 0.10810811 0.4864865  1.0  3.324324
-[3,] 0.09729730 0.19459459 0.38918919 1.7513514  3.6 11.967568
-[4,] 0.29189189 0.58378378 1.16756757 5.2540541 10.8 35.902703
-[5,] 0.33513514 0.67027027 1.34054054 6.0324324 12.4 41.221622
-[6,] 0.15675676 0.31351351 0.62702703 2.8216216  5.8 19.281081
-[7,] 0.07027027 0.14054054 0.28108108 1.2648649  2.6  8.643243</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>taula_alimentacio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     
-        5   6   7   8   9  10 Sum
-  3     0   0   0   0   1   3   4
-  5     0   0   0   1   2   2   5
-  6     0   0   0   2   4  12  18
-  7     1   1   3   8  10  31  54
-  8     0   0   0   4  14  44  62
-  9     0   0   1   3   4  21  29
-  10    0   1   0   0   2  10  13
-  Sum   1   2   4  18  37 123 185</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>taula_esport</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     
-        5   6   7   8   9  10 Sum
-  1     0   0   0   0   0   1   1
-  3     0   0   0   0   1   0   1
-  4     0   0   0   1   1   0   2
-  5     0   0   1   0   1   5   7
-  6     0   0   0   0   2  11  13
-  7     0   0   0   2   7  15  24
-  8     0   1   0   8   8  27  44
-  9     0   1   1   4   7  18  31
-  10    1   0   2   3  10  46  62
-  Sum   1   2   4  18  37 123 185</code></pre>
-</div>
-</div>
-<p>Notem que no, llavors hauríem d’agrupar els nivells per a que es cumpleixi la condició necessària:</p>
+<section id="proposta-resposta-global" class="level1">
+<h1>Proposta resposta global</h1>
+<p>La idea és contestar la pregunta de “la formació en veu afecta a la seva percepció de qualitat?”. A partir de les dades recollides, proposam fixar-nos en les respostes a “Té formació sobre salut vocal?” i fer tres grups:</p>
+<ul>
+<li><p>Fora formació</p></li>
+<li><p>Formació independent (respostes a “vaig fer un curs fa temps” i “he fet un curs pel meu compte”)</p></li>
+<li><p>Formació concreta (respostes a “logopeda” i “curs de servei de precaució”)</p></li>
+</ul>
+<p>Llavors, mostrar en un gràfic de violí les densitats de la VHI a cada grup, i fer una ANOVA d’una via amb les poblacions.</p>
+<p>Cap a dir que les respostes al qüestionari semblen incoherents en ocasions. Centrant-nos en les variables tractades en aquesta pregunta, les tendències a la importància donada a veu, esport i alimentació són pràcticament sempre molt altes. De fet, la densitat de la resposta a la importància a la veu sembla estar condicionada pel fet de respondre un qüestionari sobre el propi tema. Proposam valorar les importàncies donades als factors en base a criteris objectius preestablers per aconseguir una representació més fidel. Per exemple, hi ha individus responent amb molta importància a l’esport que realitzen manco esport a individus que n’hi donen molt poca; o individus que consumeixen alcohol, gaseosa i cafès habitualment que donen molta importància a la dieta.</p>
 </section>
 
 </main>
@@ -598,12 +221,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiat!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiat!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
