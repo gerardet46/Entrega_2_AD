@@ -140,7 +140,7 @@ corrs = data %>% select(c(2,8,14,28)) %>% rename(
 ggcorrplot(corrs, type = "lower", lab=TRUE)
 ```
 
-Veim que la importància a l'esport i l'alimentació amb la veu no estan gens correlacionades. És més, tampoc no es veu una correlació entre la importància a la veu i la VHI, i curiosament el valor obtingut és negatiu.
+Veim que la importància a l'esport i l'alimentació amb la veu no estan gens correlacionades. És més, tampoc no es veu una correlació entre la importància a la veu i la VHI, però el valor obtingut és negatiu, com s'espera.
 
 Anem a veure també la distribució de les respostes, així com alguns estadístics.
 
