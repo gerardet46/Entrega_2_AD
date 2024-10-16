@@ -32,6 +32,7 @@ A més, hem netejat les dades per tenir noms de variables més manejables i hem 
 ```{r}
 #Empram la neteja de dades proporcionada al git de la classe per poder unificar totes les preguntes en un sol document.
 
+#ALERTA! Nom de l'arxiu: data_raw.csv en lloc de Salut_Vocal_anonimizada.csv
 raw_data<-read.csv("data_raw.csv",
                    header=TRUE, sep=";")
 
