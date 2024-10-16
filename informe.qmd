@@ -1,5 +1,5 @@
 ---
-title: "Símptomes vocals professors"
+title: "Símptomes vocals dels professors"
 subtitle: "Pregunta 1: Els professors donen manco importància a la veu que a l'esport o l'alimentació?"
 date: today
 format:
@@ -7,7 +7,6 @@ format:
     theme: lumen
     toc: true
     toc-depth: 3
-Rendering:
     embed-resources: true
 editor: visual
 author: "Miquel Àngel Aguiló, Joan Camps, Gerard Ribas"
@@ -25,8 +24,13 @@ library(ggcorrplot)
 
 Enllaç [git](https://github.com/gerardet46/Entrega_2_AD).
 
+### Introducció
+L'objectiu d'aquest informe és contestar la pregunta *"Els professors donen menys importància a la veu que a l'esport o a l'alimentació?"*. El conjunt de dades s'ha obtingut a partir d'una enquesta que estudia la salut vocal contestada per una mostra de professors. Per contestar la pregunta, estudiarem les respostes a les preguntes *"Quina importància dona al ...?"*, puntuades de l'1 al 10, per poder comparar la importància que es dona a cadascun dels factors.
+
+A més, hem netejat les dades per tenir noms de variables més manejables i hem calculat el *VHI*, com a la suma de puntuacions de les preguntes amb resposta des de *Mai* a *Sempre*, del 0 al 4, respectivament. Recordem que una major *VHI* implica una menor qualitat de veu.
+
 ```{r}
-#Empram la neteja de dades propocionada al git de la classe per poder unificar totes les preguntes en un sol document.
+#Empram la neteja de dades proporcionada al git de la classe per poder unificar totes les preguntes en un sol document.
 
 raw_data<-read.csv("data_raw.csv",
                    header=TRUE, sep=";")
@@ -94,7 +98,7 @@ data<-data %>% select(-c(28:37))%>%
 #glimpse(data)
 ```
 
-### Anàlisi exploratori
+### Anàlisi exploratòria
 
 Inicialment creuarem les dades d'importància a la veu amb importància a l'alimentació; i d'importància a la veu amb importància a l'esport.
 
@@ -163,7 +167,7 @@ ggplot(data_long, aes(x=categoria, y=valor, fill=categoria)) +
   ) + 
   scale_x_discrete(labels = c("dieta_saludable" = "Alimentació", "importancia_deporte" = "Esport", "importancia_voz" = "Veu")) +
   scale_y_continuous(limits=c(0,10),breaks = seq(0, 10, 1)) 
-summary(data_long$valor ~data$importancia_voz)
+#summary(data_long$valor ~data$importancia_voz)
 ```
 
 Analitzant el gràfic, podem veure que les tendències de les respostes segueixen un ordre. Les respostes a la veu solen ser més altes que a esport, i aquestes darreres a alimentació. Així, les medianes a cada variable també segueixen aquest ordre.
@@ -172,7 +176,7 @@ Analitzant el gràfic, podem veure que les tendències de les respostes segueixe
 
 Comprovarem si la diferència observada entre les medianes es pot inferir a la població. Aplicarem un test ANOVA paramètric per blocs, on cada una de les persones representa un bloc, i els tractaments són donar importància a l'alimentació, a l'esport, o a la veu.
 
-Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus.
+Intuïtivament podem pensar que sí hi ha interacció entre blocs i tractaments: la diferència entre importància donada a alimentació i veu pot variar molt entre els individus. Procedim amb el test:
 
 ```{r}
 #Feim df per aplicar anova per blocs
@@ -186,25 +190,25 @@ df_anova = df_anova %>% pivot_longer(
 friedman.test(nota~Tractament|id,data=df_anova)
 ```
 
-El p-valor és ínfim, i concloem que en mitjana no es dona la mateixa importància a esport, veu i alimentació.
+El p-valor és ínfim, i concloem que en mediana no es dona la mateixa importància a esport, veu i alimentació. Ara, ens interessa saber quines parelles de blocs tenen una diferència significativa en les medianes.
 
 ```{r}
 pairwise.wilcox.test(df_anova$nota, df_anova$Tractament, paired =TRUE)
 
 ```
 
-En mitjana es dona una importància diferent a cada un dels tres aspectes.
+Per tant, en mitjana es dona una importància diferent a cada un dels tres aspectes. Responent l'objectiu plantejat, concloem que els professors donen més importància a la veu que a l'esport o a l'alimentació.
 
-# Proposta resposta global
+# Proposta de resposta global
 
-La idea és contestar la pregunta de "la formació en veu afecta a la seva percepció de qualitat?". A partir de les dades recollides, proposam fixar-nos en les respostes a "Té formació sobre salut vocal?" i fer tres grups:
+La idea és contestar la pregunta de *"la formació en veu afecta a la seva percepció de qualitat?"*. A partir de les dades recollides, proposam fixar-nos en les respostes a *"Té formació sobre salut vocal?"* i fer tres grups:
 
 -   Fora formació
 
--   Formació independent (respostes a "vaig fer un curs fa temps" i "he fet un curs pel meu compte")
+-   Formació independent (respostes a *"vaig fer un curs fa temps"* i *"he fet un curs pel meu compte"*)
 
--   Formació concreta (respostes a "logopeda" i "curs de servei de precaució")
+-   Formació concreta (respostes a *"logopeda"* i *"curs de servei de precaució"*)
 
 Llavors, mostrar en un gràfic de violí les densitats de la VHI a cada grup, i fer una ANOVA d'una via amb les poblacions.
 
-Cap a dir que les respostes al qüestionari semblen incoherents en ocasions. Centrant-nos en les variables tractades en aquesta pregunta, les tendències a la importància donada a veu, esport i alimentació són pràcticament sempre molt altes. De fet, la densitat de la resposta a la importància a la veu sembla estar condicionada pel fet de respondre un qüestionari sobre el propi tema. Proposam valorar les importàncies donades als factors en base a criteris objectius preestablers per aconseguir una representació més fidel. Per exemple, hi ha individus responent amb molta importància a l'esport que realitzen manco esport a individus que n'hi donen molt poca; o individus que consumeixen alcohol, gaseosa i cafès habitualment que donen molta importància a la dieta.
+Cap a dir que les respostes al qüestionari semblen incoherents en ocasions. Centrant-nos en les variables tractades en aquesta pregunta, les tendències a la importància donada a veu, esport i alimentació són pràcticament sempre molt altes. De fet, la densitat de la resposta a la importància a la veu sembla estar condicionada pel fet de respondre un qüestionari sobre el propi tema. Proposam valorar les importàncies donades als factors en base a criteris objectius preestablerts per aconseguir una representació més fidel. Per exemple, hi ha individus responent amb molta importància a l'esport que realitzen manco esport a individus que n'hi donen molt poca; o individus que consumeixen alcohol, gasosa i cafès habitualment que donen molta importància a la dieta.
