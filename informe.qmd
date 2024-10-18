@@ -250,5 +250,10 @@ data %>% subset(formacion == "Formació independent") %>% select(VHI) %>% as_vec
 # Per tant, hem de fer un ANOVA no paramètric
 kruskal.test(VHI~formacion, data = data)
 
-# Concloem que, amb una significància de 0.05, no hi ha diferències en les medianes
+# Concloem que, amb una significància de 0.05, sí hi ha diferències en les medianes.
+# Per tant, facem el test per parelles per veure quines són diferents.
+pairwise.wilcox.test(data$VHI, data$formacion, p.adjust.method = 'bonferroni')
+
+# Obtenim que l'única parella amb medianes significativament diferents és la de formació concreta-sense formació.
+# Tot i això, els que no tenen formació tenen menor VHI que els que sí en tenen
 ```
