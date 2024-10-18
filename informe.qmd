@@ -32,7 +32,6 @@ A més, hem netejat les dades per tenir noms de variables més manejables i hem 
 ```{r}
 #Empram la neteja de dades proporcionada al git de la classe per poder unificar totes les preguntes en un sol document.
 
-#ALERTA! Nom de l'arxiu: data_raw.csv en lloc de Salut_Vocal_anonimizada.csv
 raw_data<-read.csv("data_raw.csv",
                    header=TRUE, sep=";")
 
@@ -213,3 +212,43 @@ La idea és contestar la pregunta de *"la formació en veu afecta a la seva perc
 Llavors, mostrar en un gràfic de violí les densitats de la VHI a cada grup, i fer una ANOVA d'una via amb les poblacions.
 
 Cap a dir que les respostes al qüestionari semblen incoherents en ocasions. Centrant-nos en les variables tractades en aquesta pregunta, les tendències a la importància donada a veu, esport i alimentació són pràcticament sempre molt altes. De fet, la densitat de la resposta a la importància a la veu sembla estar condicionada pel fet de respondre un qüestionari sobre el propi tema. Proposam valorar les importàncies donades als factors en base a criteris objectius preestablerts per aconseguir una representació més fidel. Per exemple, hi ha individus responent amb molta importància a l'esport que realitzen manco esport a individus que n'hi donen molt poca; o individus que consumeixen alcohol, gasosa i cafès habitualment que donen molta importància a la dieta.
+
+## Implementació de la proposta
+```{r, include=T, echo=T}
+# obtenim les distintes respostes a "formacion_voz"
+data %>% select(formacion_voz) %>% distinct
+
+# agrupam les formacions
+# Independent       -> un curs fa temps, formació pel meu compte, curs de cant, Si tenc formació
+# Formació concreta -> logopèdia, la formació que imparteixen ells
+# Sense formació    -> mai, aquest any farem la formació
+data <- data %>% mutate(formacion = case_when(
+     str_detect(formacion_voz, "un curs fa temps|meu compte|algun curs de cant|Si tenc Formació") ~ "Formació independent",
+     str_detect(formacion_voz, "logop|He fet la formac") ~ "Formació concreta",
+     TRUE ~ "Sense formació"
+   ), .after = formacion_voz)
+
+# número de mostres de cada grup
+data %>% select(formacion) %>% table
+
+# gràfic de violí
+ggplot(data, aes(x=formacion, y=VHI, fill=formacion)) + 
+  geom_violin(trim=FALSE)+
+  geom_boxplot(width=0.1, fill="white")+
+  labs(title="",x="Formació", y = "VHI") +
+  theme_classic() +
+  theme(
+    legend.position="none",
+    plot.title = element_text(size=11)
+  ) + 
+  scale_y_continuous(limits=c(0,40),breaks = seq(0, 40, 5))
+
+# normalitat
+data %>% subset(formacion == "Formació independent") %>% select(VHI) %>% as_vector %>% shapiro.test
+
+# ja hi ha un bloc que no és normal
+# Per tant, hem de fer un ANOVA no paramètric
+kruskal.test(VHI~formacion, data = data)
+
+# Concloem que, amb una significància de 0.05, no hi ha diferències en les medianes
+```
